@@ -1,6 +1,6 @@
-# Planets Infos
+# React Search Map
 
-Uma pagina com informações dos planetas do sistema solar! 
+Uma pagina com a intensão de encontrar localizações específicas.
 
 
 ## Tecnologias utilizadas
