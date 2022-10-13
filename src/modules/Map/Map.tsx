@@ -1,6 +1,7 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import { API_KEY } from "../../constants/enviroments";
+import { theme } from "../../constants/mapStyle";
 
 type Props = {
   text: string;
@@ -43,12 +44,14 @@ export default function Map() {
 
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div>
       <GoogleMapReact
         bootstrapURLKeys={{ key: API_KEY, libraries: ["places"] }}
         center={position}
         defaultZoom={zoom}
         zoom={zoom}
+        style={{ height: "100vh", width: "100%" }}
+        options={{ styles: theme }}
       >
         <AnyReactComponent
           lat={-23.4660121}
