@@ -21,5 +21,5 @@ npm run dev
 ```
 
 
-#### Confira o processo em [https://poc-next-google-map-api.vercel.app/](https://poc-next-google-map-apivercelapp/)
+#### Confira o processo em [https://poc-next-google-map-api.vercel.app/](https://poc-next-google-map-api.vercel.app//)
 
