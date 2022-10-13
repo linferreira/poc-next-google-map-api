@@ -1,11 +1,12 @@
 # React Search Map
 
-Uma pagina com a intensão de encontrar localizações específicas.
+Uma página com a intenção de encontrar localizações específicas.
 
 
 ## Tecnologias utilizadas
 - TypeScript
 - React
+- Google Map React
 
 
 ### Passos para rodar o projeto

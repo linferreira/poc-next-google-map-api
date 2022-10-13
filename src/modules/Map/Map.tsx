@@ -2,6 +2,7 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import { API_KEY } from "../../constants/enviroments";
 import { theme } from "../../constants/mapStyle";
+import { stores } from "../../constants/stores";
 
 type Props = {
   text: string;
@@ -9,7 +10,7 @@ type Props = {
   lng: number;
 };
 
-const AnyReactComponent = ({ text }: Props) => (
+const AnyReactComponent = (props: Props) => (
   <div
     style={{
       width: 30,
@@ -53,11 +54,14 @@ export default function Map() {
         style={{ height: "100vh", width: "100%" }}
         options={{ styles: theme }}
       >
-        <AnyReactComponent
-          lat={-23.4660121}
-          lng={-47.4951893}
-          text="My Marker"
-        />
+        {stores.map((store) => (
+          <AnyReactComponent
+            key={store.id}
+            lat={store.position.lat}
+            lng={store.position.lng}
+            text={store.name}
+          />
+        ))}
       </GoogleMapReact>
     </div>
   );
