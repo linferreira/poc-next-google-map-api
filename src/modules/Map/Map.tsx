@@ -22,7 +22,9 @@ const AnyReactComponent = (props: Props) => (
   />
 );
 
+
 export default function Map() {
+  const [bounds, setBounds] = React.useState(null);
   const [position, setPosition] = React.useState({
     lat: -14.235004,
     lng: -51.925282,
@@ -44,7 +46,6 @@ export default function Map() {
   }, []);
 
   return (
-    // Important! Always set the container height explicitly
     <div>
       <GoogleMapReact
         bootstrapURLKeys={{ key: API_KEY, libraries: ["places"] }}
@@ -53,6 +54,11 @@ export default function Map() {
         zoom={zoom}
         style={{ height: "100vh", width: "100%" }}
         options={{ styles: theme }}
+        onChange={({ center }) => {
+          const {lat, lng} = center;
+          setZoom(zoom);
+          setPosition({ lat, lng });          
+        }}
       >
         {stores.map((store) => (
           <AnyReactComponent

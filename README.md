@@ -6,7 +6,7 @@ Uma página com a intenção de encontrar localizações específicas.
 ## Tecnologias utilizadas
 - TypeScript
 - React
-- Google Map React
+- [Google Map React](https://github.com/google-map-react/google-map-react)
 
 
 ### Passos para rodar o projeto
