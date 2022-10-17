@@ -22,11 +22,10 @@ type SelectValue = {
   };
 };
 
-const Pin = (props: Props) => (
-  <img src={"/map.png"} alt="map" width={25} />
-);
+const Pin = (props: Props) => <img src={"/map.png"} alt="map" width={25} />;
 
 export default function Map() {
+  const mapRef = React.useRef();
   const [bounds, setBounds] = React.useState(null);
   const [position, setPosition] = React.useState({
     lat: -14.235004,
@@ -39,6 +38,13 @@ export default function Map() {
     setStateSelected(newValue);
     setPosition(newValue.position);
     setZoom(11);
+  }
+
+  function handleMapChange({ bounds, center, zoom }) {
+    const { lat, lng } = center;
+    setZoom(zoom);
+    setPosition({ lat, lng });
+    setBounds([bounds.nw.lng, bounds.se.lat, bounds.se.lng, bounds.nw.lat]);
   }
 
   React.useEffect(() => {
@@ -77,15 +83,15 @@ export default function Map() {
         zoom={zoom}
         style={{ height: "100vh", width: "100%" }}
         options={{ styles: theme }}
-        onChange={({ center }) => {
-          const { lat, lng } = center;
-          setZoom(zoom);
-          setPosition({ lat, lng });
+        onChange={handleMapChange}
+        yesIWantToUseGoogleMapApiInternals
+        onGoogleApiLoaded={({ map }) => {
+          mapRef.current = map;
         }}
       >
-        {stores.map((store) => (
+        {stores.map((store, index) => (
           <Pin
-            key={store.id}
+            key={index}
             lat={store.position.lat}
             lng={store.position.lng}
             text={store.name}
