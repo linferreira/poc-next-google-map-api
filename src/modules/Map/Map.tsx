@@ -19,19 +19,11 @@ type SelectValue = {
   position: {
     lat: number;
     lng: number;
-  }
-}
+  };
+};
 
-const AnyReactComponent = (props: Props) => (
-  <div
-    style={{
-      width: 30,
-      height: 30,
-      borderRadius: 30,
-      background: "red",
-      color: "white",
-    }}
-  />
+const Pin = (props: Props) => (
+  <img src={"/map.png"} alt="map" width={25} />
 );
 
 export default function Map() {
@@ -92,7 +84,7 @@ export default function Map() {
         }}
       >
         {stores.map((store) => (
-          <AnyReactComponent
+          <Pin
             key={store.id}
             lat={store.position.lat}
             lng={store.position.lng}
