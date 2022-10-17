@@ -46,6 +46,7 @@ export default function Map() {
   function handleChangeSelect(newValue: SelectValue) {
     setStateSelected(newValue);
     setPosition(newValue.position);
+    setZoom(11);
   }
 
   React.useEffect(() => {
